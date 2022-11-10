@@ -7,6 +7,9 @@ map('n', '<TAB>', '<CMD>bn<CR>')
 map('n', '<s-TAB>', '<CMD>bp<CR>')
 map('n', 'Q', '<CMD>bd<CR>')
 
+-- reload config
+map('n', '<leader>uc', '<CMD>source ~/.config/nvim/init.lua<CR>')
+
 -- Copying the vscode behaviour of making tab splits
 map('n', '<C-\\>', '<CMD>vsplit<CR>')
 

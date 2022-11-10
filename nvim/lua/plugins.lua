@@ -85,10 +85,16 @@ return require('packer').startup(function(use)
       end,
     },
     { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
-    { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      after = 'nvim-treesitter',
+    },
     { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
     { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
-    { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
+    {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      after = 'nvim-treesitter',
+    },
   })
 
   --------------------------
@@ -119,12 +125,7 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use({
-    'dinhhuy258/git.nvim',
-    config = function()
-      require('plugins.git')
-    end,
-  })
+  use({ 'tpope/vim-fugitive' })
 
   use({
     'rhysd/git-messenger.vim',

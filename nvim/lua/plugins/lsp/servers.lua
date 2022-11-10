@@ -77,8 +77,7 @@ lsp.angularls.setup({
 
 lsp.omnisharp.setup({
   cmd = {
-    'dotnet',
-    'omnisharp',
+    '/Users/artemson/.local/share/nvim/mason/bin/omnisharp-mono'
   },
 
   -- Enables support for reading code style, naming convention and analyzer
