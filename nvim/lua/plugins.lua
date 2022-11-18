@@ -186,13 +186,13 @@ return require('packer').startup(function(use)
   -- Terminal --
   --------------
 
-  use({
-    'numToStr/FTerm.nvim',
-    event = 'CursorHold',
-    config = function()
-      require('plugins.fterm')
-    end,
-  })
+  -- use({
+  --   'numToStr/FTerm.nvim',
+  --   event = 'CursorHold',
+  --   config = function()
+  --     require('plugins.fterm')
+  --   end,
+  -- })
 
   -----------------------------------
   -- LSP, Completions and Snippets --
@@ -265,6 +265,13 @@ return require('packer').startup(function(use)
     after = 'nvim-cmp',
     config = function()
       require('plugins.pairs')
+    end,
+  })
+
+  use({
+    'tpope/vim-dispatch',
+    config = function()
+      require('plugins.vim-dispatch')
     end,
   })
 

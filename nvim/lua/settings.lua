@@ -2,7 +2,7 @@ local g = vim.g
 local o = vim.o
 
 -- cmd('syntax on')
--- vim.api.nvim_command('filetype plugin indent on')
+vim.api.nvim_command('filetype plugin indent on')
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -62,7 +62,7 @@ o.splitright = true
 o.splitbelow = true
 
 -- Preserve view while jumping
-o.jumpoptions = 'view'
+-- o.jumpoptions = 'view'
 
 -- BUG: this won't update the search count after pressing `n` or `N`
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
@@ -77,3 +77,8 @@ o.jumpoptions = 'view'
 -- Map <leader> to space
 g.mapleader = ' '
 g.maplocalleader = ' '
+
+
+vim.cmd([[
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+]])

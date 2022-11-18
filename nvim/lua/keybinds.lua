@@ -1,11 +1,11 @@
 local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true })
+  vim.keymap.set(m, k, v, { silent = true })
 end
 
 -- Move to the next/previous buffer
 map('n', '<TAB>', '<CMD>bn<CR>')
 map('n', '<s-TAB>', '<CMD>bp<CR>')
-map('n', 'Q', '<CMD>bd<CR>')
+map('n', 'Q', '<CMD>bd!<CR>')
 
 -- reload config
 map('n', '<leader>uc', '<CMD>source ~/.config/nvim/init.lua<CR>')
@@ -34,5 +34,5 @@ nnoremap <silent> <c-m> :call ToggleQuickFix()<CR>
 ]])
 
 vim.cmd([[
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 ]])

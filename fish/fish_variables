@@ -6,7 +6,12 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fish
 SETUVAR _fisher_jorgebucaran_2F_hydro_files:\x7e/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/hydro\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejustinmayer/virtualfish\x1ejorgebucaran/hydro\x1eedouard\x2dlopez/ayu\x2dtheme\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR _hydro_git_9086:dev/robot\u2022\x20
+SETUVAR _hydro_git_18086:main\u2022\x20
+SETUVAR _hydro_git_19020:master\u2022\x20
+SETUVAR _hydro_git_57845:develop\u2022\x20
+SETUVAR _hydro_git_66319:develop\u2022\x20
+SETUVAR _hydro_git_67616:develop\u2022\x20
+SETUVAR _hydro_git_72678:develop\u2022\x20
 SETUVAR _hydro_git_92992:main\u2022\x20
 SETUVAR _hydro_git_94008:main\u2022\x20
 SETUVAR ayu_variant:dark
