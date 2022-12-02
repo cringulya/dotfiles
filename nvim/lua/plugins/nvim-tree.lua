@@ -18,7 +18,7 @@ require('nvim-tree').setup({
     },
   },
   filters = {
-    custom = { '.git$', 'node_modules$', '^target$' },
+    custom = { '.git$', 'node_modules$', '^target$', '*.meta' },
   },
   git = {
     ignore = false,

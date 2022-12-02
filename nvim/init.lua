@@ -3,5 +3,6 @@ require('settings')
 require('plugins')
 require('keybinds')
 require('gui-settings')
+require('term')
 
-require('Sakura').load()
+vim.cmd([[colorscheme tokyonight-night]])

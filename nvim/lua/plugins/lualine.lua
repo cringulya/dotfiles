@@ -1,6 +1,6 @@
 require('lualine').setup({
   options = {
-    theme = 'sakura',
+    theme = 'tokyonight',
     component_separators = '',
     section_separators = '',
     icons_enabled = true,

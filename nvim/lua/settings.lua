@@ -24,6 +24,11 @@ o.scrolloff = 5
 o.number = true
 o.cursorline = true
 
+-- Blinking cursor
+-- vim.cmd([[
+-- set guicursor=a:blinkwait5-blinkon5-blinkoff5
+-- ]])
+
 -- Better editing experience
 o.expandtab = true
 -- o.smarttab = true

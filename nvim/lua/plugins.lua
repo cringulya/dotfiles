@@ -11,8 +11,16 @@ return require('packer').startup(function(use)
   ---------------------
 
   use('wbthomason/packer.nvim')
-
   use('nvim-lua/plenary.nvim')
+  use('morhetz/gruvbox')
+  use({
+    'folke/tokyonight.nvim',
+    config = function()
+      require('tokyonight').setup({ style = 'night' })
+    end,
+  })
+
+  use('tomasiser/vim-code-dark')
 
   ----------------------------------------
   -- Theme, Icons, Statusbar, Bufferbar --
@@ -69,8 +77,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use({ 'luochen1990/rainbow' })
-
   -----------------------------------
   -- Treesitter: Better Highlights --
   -----------------------------------
@@ -93,6 +99,10 @@ return require('packer').startup(function(use)
     { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
     {
       'JoosepAlviste/nvim-ts-context-commentstring',
+      after = 'nvim-treesitter',
+    },
+    {
+      'p00f/nvim-ts-rainbow',
       after = 'nvim-treesitter',
     },
   })
@@ -193,6 +203,14 @@ return require('packer').startup(function(use)
   --     require('plugins.fterm')
   --   end,
   -- })
+
+  use({
+    'doums/oterm.nvim',
+    event = 'CursorHold',
+    config = function()
+      require('plugins.oterm')
+    end,
+  })
 
   -----------------------------------
   -- LSP, Completions and Snippets --

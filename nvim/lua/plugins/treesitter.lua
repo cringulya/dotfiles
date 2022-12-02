@@ -8,18 +8,23 @@ require('nvim-treesitter.configs').setup({
   auto_install = true,
   ensure_installed = {
     'c',
-    'lua',
-    'rust',
-    'go',
-    'javascript',
-    'typescript',
-    'tsx',
-    'markdown',
-    'markdown_inline',
-    'html',
+    'cpp',
     'css',
+    'dockerfile',
+    'fish',
+    'gitignore',
+    'html',
+    'java',
+    'javascript',
     'json',
-    'bash',
+    'latex',
+    'lua',
+    'make',
+    'markdown',
+    'tsx',
+    'vim',
+    'python',
+    'typescript'
   },
   highlight = {
     enable = true,
@@ -27,7 +32,7 @@ require('nvim-treesitter.configs').setup({
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
   indent = {
     enable = true,
@@ -122,5 +127,21 @@ require('nvim-treesitter.configs').setup({
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
+  },
+  rainbow = {
+    enable = false,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    colors = {
+      '#E06C75',
+      '#E5C07B',
+      '#78B389',
+      '#56B6C2',
+      '#61AFEF',
+      '#C678DD',
+      '#E06C75',
+    }, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
   },
 })
