@@ -4,11 +4,11 @@ vim.keymap.set(
   '<C-t>',
   "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>"
 )
-vim.keymap.set(
-  't',
-  '<ESC>',
-  "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>"
-)
+-- vim.keymap.set(
+--   't',
+--   '<ESC>',
+--   "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>"
+-- )
 vim.keymap.set('n', '<A-g>', function()
   require('FTerm')
     :new({

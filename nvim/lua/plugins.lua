@@ -11,8 +11,14 @@ return require('packer').startup(function(use)
   ---------------------
 
   use('wbthomason/packer.nvim')
+
   use('nvim-lua/plenary.nvim')
+
+  ----------------------------------------
+  -- Theme, Icons, Statusbar, Bufferbar --
+  ----------------------------------------
   use('morhetz/gruvbox')
+
   use({
     'folke/tokyonight.nvim',
     config = function()
@@ -20,11 +26,7 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use('tomasiser/vim-code-dark')
-
-  ----------------------------------------
-  -- Theme, Icons, Statusbar, Bufferbar --
-  ----------------------------------------
+  use({ 'numToStr/Sakura.nvim' })
 
   use({
     'kyazdani42/nvim-web-devicons',
@@ -32,9 +34,6 @@ return require('packer').startup(function(use)
       require('nvim-web-devicons').setup()
     end,
   })
-
-  use({ 'numToStr/Sakura.nvim' })
-  use({ 'laniusone/kyotonight.vim' })
 
   use({
     {
@@ -196,19 +195,11 @@ return require('packer').startup(function(use)
   -- Terminal --
   --------------
 
-  -- use({
-  --   'numToStr/FTerm.nvim',
-  --   event = 'CursorHold',
-  --   config = function()
-  --     require('plugins.fterm')
-  --   end,
-  -- })
-
   use({
-    'doums/oterm.nvim',
+    'numToStr/FTerm.nvim',
     event = 'CursorHold',
     config = function()
-      require('plugins.oterm')
+      require('plugins.fterm')
     end,
   })
 
