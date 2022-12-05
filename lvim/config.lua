@@ -37,7 +37,23 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>G<cr>", "Fugitive status" }
 lvim.builtin.which_key.mappings["c"] = {}
 
--- -- Change theme settings
+-- tabcompletion
+local cmp = require("cmp")
+lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(function(fallback)
+	if cmp.visible() then
+		local entry = cmp.get_selected_entry()
+		if not entry then
+			cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+			cmp.confirm()
+		else
+			cmp.confirm()
+		end
+	else
+		fallback()
+	end
+end, { "i", "s" })
+
+-- Change theme settings
 lvim.colorscheme = "tokyonight-night"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
