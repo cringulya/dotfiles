@@ -1,8 +1,3 @@
---[[
- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
- `lvim` is the global options object
-]]
-
 -- vim options
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -14,22 +9,26 @@ lvim.format_on_save = {
 	pattern = "*.lua",
 	timeout = 1000,
 }
+
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
--- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
+
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<tab>"] = ":bn<cr>"
-lvim.keys.normal_mode["<s-tab>"] = ":bp<cr>"
-lvim.keys.normal_mode["<s-q>"] = ":bd<cr>"
-lvim.keys.normal_mode["<c-n>"] = ":NvimTreeToggle<cr>"
-lvim.keys.normal_mode["<esc>"] = ":cclose<cr>"
+lvim.keys.normal_mode["<tab>"] = "<cmd>bn<cr>"
+lvim.keys.normal_mode["<s-tab>"] = "<cmd>bp<cr>"
+lvim.keys.normal_mode["<s-q>"] = "<cmd>bd<cr>"
+lvim.keys.normal_mode["<c-n>"] = "<cmd>NvimTreeToggle<cr>"
+lvim.keys.normal_mode["<esc>"] = "<cmd>cclose<cr>"
+lvim.keys.normal_mode["<c-t>"] = "<cmd>ToggleTerm<cr>"
+lvim.keys.term_mode["<c-t>"] = "<cmd>ToggleTerm<cr>"
 lvim.lsp.buffer_mappings.normal_mode["Ï"] = { vim.lsp.buf.format, "Format" }
+lvim.lsp.buffer_mappings.normal_mode["<leader>r"] = { vim.lsp.buf.rename, "Format" }
 
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.insert_mode["<c-l>"] = '<CMD>lua require("luasnip").jump(1)<CR>'
+lvim.keys.insert_mode["<c-h>"] = '<CMD>lua require("luasnip").jump(-1)<CR>'
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
@@ -37,8 +36,15 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 lvim.builtin.which_key.mappings["g"]["g"] = { "<cmd>G<cr>", "Fugitive status" }
 lvim.builtin.which_key.mappings["c"] = {}
 
+vim.cmd([[
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+]])
+
 -- tabcompletion
 local cmp = require("cmp")
+cmp = require("cmp")
+lvim.builtin.cmp.mapping["<c-j>"] = {}
+lvim.builtin.cmp.mapping["<c-k>"] = {}
 lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(function(fallback)
 	if cmp.visible() then
 		local entry = cmp.get_selected_entry()
@@ -77,7 +83,10 @@ lvim.builtin.project.patterns = {
 	".svn",
 	"Makefile",
 	"package.json",
+	".stylua.toml",
 }
+
+lvim.builtin.telescope.file_ignore_patterns = { "build" }
 
 lvim.builtin.alpha.dashboard.section.header.val = {
 	"",
@@ -200,16 +209,7 @@ lvim.plugins = {
 
 			vim.keymap.set("n", "<leader>cg", "<CMD>CMake<CR>")
 			vim.keymap.set("n", "<leader>cb", "<CMD>CMake build_all<CR>")
-			vim.keymap.set("n", "<leader>cr", "<CMD>CMake run<CR>")
+			vim.keymap.set("n", "<leader>cr", "<CMD>CMake build_and_run<CR>")
 		end,
 	},
 }
-
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
