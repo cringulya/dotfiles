@@ -1,10 +1,13 @@
 require('nvim-tree').setup({
 
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
   diagnostics = {
     enable = true,
   },
   update_focused_file = {
     enable = true,
+    update_root = true,
   },
   view = {
     width = 30,
@@ -13,7 +16,7 @@ require('nvim-tree').setup({
       list = {
         { key = 'l', action = 'edit', mode = 'n' },
         { key = 'h', action = 'close_node', mode = 'n' },
-        { key = 'cd', action = 'cd', mode = 'n' },
+        { key = 'C', action = 'cd', mode = 'n' },
       },
     },
   },

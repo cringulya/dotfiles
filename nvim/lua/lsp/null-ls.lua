@@ -1,5 +1,5 @@
 local nls = require('null-ls')
-local U = require('plugins.lsp.utils')
+local U = require('lsp.utils')
 
 local fmt = nls.builtins.formatting
 local dgn = nls.builtins.diagnostics
@@ -39,19 +39,23 @@ nls.setup({
     -----------------
     -- DIAGNOSTICS --
     -----------------
-    dgn.eslint_d,
     dgn.shellcheck,
     dgn.luacheck.with({
       extra_args = { '--globals', 'vim', '--std', 'luajit' },
     }),
+    dgn.flake8,
     ------------------
     -- CODE ACTIONS --
     ------------------
-    cda.eslint_d,
     cda.shellcheck,
   },
+
   on_attach = function(client, bufnr)
     -- U.fmt_on_save(client, bufnr)
     U.mappings(bufnr)
+    local navic = require('nvim-navic')
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
   end,
 })

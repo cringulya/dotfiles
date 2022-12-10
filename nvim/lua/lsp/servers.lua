@@ -1,5 +1,5 @@
 local lsp = require('lspconfig')
-local U = require('plugins.lsp.utils')
+local U = require('lsp.utils')
 
 ---Common perf related flags for all the LSP servers
 local flags = {
@@ -29,8 +29,30 @@ vim.diagnostic.config({
   },
   float = {
     source = 'always',
+    focusable = false,
+    style = 'minimal',
+    border = 'rounded',
+    format = function(d)
+      local code = d.code or (d.user_data and d.user_data.lsp.code)
+      if code then
+        return string.format('%s [%s]', d.message, code):gsub('1. ', '')
+      end
+      return d.message
+    end,
   },
 })
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  focusable = false,
+  style = 'minimal',
+  border = 'rounded',
+})
+vim.lsp.handlers['textDocument/signatureHelp'] =
+  vim.lsp.with(vim.lsp.handlers.signature_help, {
+    focusable = false,
+    style = 'minimal',
+    borer = 'rounded',
+  })
 
 -- Lua
 lsp.sumneko_lua.setup({
@@ -63,6 +85,15 @@ lsp.sumneko_lua.setup({
   },
 })
 
+lsp.jsonls.setup({
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
 -- Angular
 -- 1. install @angular/language-server globally
 -- 2. install @angular/language-service inside project as dev dep
@@ -77,7 +108,7 @@ lsp.angularls.setup({
 
 lsp.omnisharp.setup({
   cmd = {
-    '/Users/artemson/.local/share/nvim/mason/bin/omnisharp-mono'
+    '/Users/artemson/.local/share/nvim/mason/bin/omnisharp-mono',
   },
 
   -- Enables support for reading code style, naming convention and analyzer
@@ -123,7 +154,6 @@ local servers = {
   'tsserver', -- Typescript
   'html', -- HTML
   'cssls', -- CSS
-  'jsonls', -- Json
   'yamlls', -- YAML
   'emmet_ls', -- emmet-ls
   'clangd',

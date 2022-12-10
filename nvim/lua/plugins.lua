@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
   ----------------------------------------
   -- Theme, Icons, Statusbar, Bufferbar --
   ----------------------------------------
-  use('morhetz/gruvbox')
 
   use({
     'folke/tokyonight.nvim',
@@ -36,12 +35,19 @@ return require('packer').startup(function(use)
   })
 
   use({
+    'glepnir/dashboard-nvim',
+    config = function()
+      require('plugins.dashboard-nvim')
+    end,
+  })
+
+  use({
     {
       'nvim-lualine/lualine.nvim',
       after = 'Sakura.nvim',
       event = 'BufEnter',
       config = function()
-        require('plugins.lualine')
+        require('plugins.lualine').setup()
       end,
     },
     {
@@ -66,13 +72,6 @@ return require('packer').startup(function(use)
     event = 'WinScrolled',
     config = function()
       require('neoscroll').setup({ hide_cursor = false })
-    end,
-  })
-
-  use({
-    'glepnir/dashboard-nvim',
-    config = function()
-      require('plugins.dashboard-nvim')
     end,
   })
 
@@ -141,13 +140,6 @@ return require('packer').startup(function(use)
     event = 'BufRead',
     config = function()
       require('plugins.git-messenger')
-    end,
-  })
-
-  use({
-    'gelguy/wilder.nvim',
-    config = function()
-      require('plugins.wilder')
     end,
   })
 
@@ -225,7 +217,7 @@ return require('packer').startup(function(use)
     'neovim/nvim-lspconfig',
     event = 'BufRead',
     config = function()
-      require('plugins.lsp.servers')
+      require('lsp.servers')
     end,
     requires = {
       {
@@ -239,7 +231,7 @@ return require('packer').startup(function(use)
     'jose-elias-alvarez/null-ls.nvim',
     event = 'BufRead',
     config = function()
-      require('plugins.lsp.null-ls')
+      require('lsp.null-ls')
     end,
   })
 
@@ -247,13 +239,13 @@ return require('packer').startup(function(use)
     {
       'hrsh7th/nvim-cmp',
       config = function()
-        require('plugins.lsp.nvim-cmp')
+        require('lsp.nvim-cmp')
       end,
       requires = {
         {
           'L3MON4D3/LuaSnip',
           config = function()
-            require('plugins.lsp.luasnip')
+            require('lsp.luasnip')
           end,
           requires = {
             {
@@ -284,6 +276,14 @@ return require('packer').startup(function(use)
     end,
   })
 
+  use({
+    'christoomey/vim-tmux-navigator',
+    config = function()
+      vim.g.tmux_navigator_save_on_switch = 2
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+    end,
+  })
+
   ------------------
   -------C/C++------
   ------------------
@@ -292,6 +292,61 @@ return require('packer').startup(function(use)
     'Shatur/neovim-cmake',
     config = function()
       require('plugins.neovim-cmake')
+    end,
+  })
+
+  -- lvim
+  -- use({
+  --   'christianchiarulli/lir.nvim',
+  --   config = function()
+  --     require('plugins.lir')
+  --   end,
+  --   requires = { 'kyazdani42/nvim-web-devicons' },
+  -- })
+
+  use({
+    'folke/which-key.nvim',
+    config = function()
+      require('plugins.which-key').setup()
+    end,
+    event = 'BufWinEnter',
+  })
+  use( -- project.nvim
+    {
+      'ahmedkhalf/project.nvim',
+      config = function()
+        require('plugins.project')
+        require('telescope').load_extension('projects')
+      end,
+      after = 'telescope.nvim',
+    }
+  )
+
+  use({
+    'akinsho/bufferline.nvim',
+    config = function()
+      require('plugins.bufferline')
+    end,
+    branch = 'main',
+    event = 'BufWinEnter',
+  })
+
+  -- SchemaStore
+  use({
+    'b0o/schemastore.nvim',
+  })
+
+  use({
+    'RRethy/vim-illuminate',
+    config = function()
+      require('plugins.illuminate')
+    end,
+  })
+  use({
+    'SmiteshP/nvim-navic',
+    requires = 'neovim/nvim-lspconfig',
+    config = function()
+      require('nvim-navic').setup()
     end,
   })
 end)

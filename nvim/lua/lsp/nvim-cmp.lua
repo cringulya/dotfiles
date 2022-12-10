@@ -59,7 +59,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { 'i', 's', 'c' }),
+    end, { 'i', 's' }),
 
     ['<c-e>'] = cmp.config.disable,
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),

@@ -3,15 +3,13 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
 -- general
+
 lvim.log.level = 'info'
 lvim.format_on_save = {
   enabled = true,
   pattern = '*.lua',
   timeout = 1000,
 }
-
--- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
 
 lvim.leader = 'space'
 
@@ -24,6 +22,10 @@ lvim.keys.normal_mode['<c-n>'] = '<cmd>NvimTreeToggle<cr>'
 lvim.keys.normal_mode['<esc>'] = '<cmd>cclose<cr>'
 lvim.keys.normal_mode['<c-t>'] = '<cmd>ToggleTerm<cr>'
 lvim.keys.term_mode['<c-t>'] = '<cmd>ToggleTerm<cr>'
+lvim.keys.normal_mode['<C-l>'] = '<C-w>l'
+lvim.keys.normal_mode['<C-j>'] = '<C-w>j'
+lvim.keys.normal_mode['<C-k>'] = '<C-w>k'
+lvim.keys.normal_mode['<C-h>'] = '<C-w>h'
 lvim.lsp.buffer_mappings.normal_mode['Ï'] = { vim.lsp.buf.format, 'Format' }
 lvim.lsp.buffer_mappings.normal_mode['<leader>r'] =
   { vim.lsp.buf.rename, 'Format' }
@@ -90,6 +92,8 @@ lvim.builtin.project.patterns = {
 
 lvim.builtin.telescope.file_ignore_patterns = { 'build' }
 
+lvim.builtin.lualine.options.theme = 'tokyonight'
+
 lvim.builtin.alpha.dashboard.section.header.val = {
   '',
   '⡿⠋⠄⣀⣀⣤⣴⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣌⠻⣿⣿',
@@ -140,6 +144,47 @@ lvim.builtin.treesitter.auto_install = true
 --   --Enable completion triggered by <c-x><c-o>
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
+--
+require('lvim.lsp.manager').setup('omnisharp', {
+  cmd = {
+    '/Users/artemson/.local/share/nvim/mason/bin/omnisharp-mono',
+  },
+
+  -- Enables support for reading code style, naming convention and analyzer
+  -- settings from .editorconfig.
+  enable_editorconfig_support = true,
+
+  -- If true, MSBuild project system will only load projects for files that
+  -- were opened in the editor. This setting is useful for big C# codebases
+  -- and allows for faster initialization of code navigation features only
+  -- for projects that are relevant to code that is being edited. With this
+  -- setting enabled OmniSharp may load fewer projects and may thus display
+  -- incomplete reference lists for symbols.
+  enable_ms_build_load_projects_on_demand = false,
+
+  -- Enables support for roslyn analyzers, code fixes and rulesets.
+  enable_roslyn_analyzers = false,
+
+  -- Specifies whether 'using' directives should be grouped and sorted during
+  -- document formatting.
+  organize_imports_on_format = false,
+
+  -- Enables support for showing unimported types and unimported extension
+  -- methods in completion lists. When committed, the appropriate using
+  -- directive will be added at the top of the current file. This option can
+  -- have a negative impact on initial completion responsiveness,
+  -- particularly for the first few completion sessions after opening a
+  -- solution.
+  enable_import_completion = true,
+
+  -- Specifies whether to include preview versions of the .NET SDK when
+  -- determining which version to use for project loading.
+  sdk_include_prereleases = true,
+
+  -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+  -- true
+  analyze_open_documents_only = false,
+})
 
 -- -- linters and formatters <https://www.lunarvim.org/docs/languages#lintingformatting>
 local formatters = require('lvim.lsp.null-ls.formatters')
@@ -163,6 +208,13 @@ lvim.plugins = {
   {
     'folke/trouble.nvim',
     cmd = 'TroubleToggle',
+  },
+  {
+    'christoomey/vim-tmux-navigator',
+    config = function()
+      vim.g.tmux_navigator_save_on_switch = 2
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+    end,
   },
   {
     'karb94/neoscroll.nvim',

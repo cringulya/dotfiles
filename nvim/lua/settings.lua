@@ -83,7 +83,6 @@ o.splitbelow = true
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-
 vim.cmd([[
   set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 ]])
