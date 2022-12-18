@@ -10,11 +10,18 @@ local flags = {
 ---Common capabilities including lsp snippets and autocompletion
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local navic = require('nvim-navic')
 
 ---Common `on_attach` function for LSP servers
 ---@param client table
 ---@param buf integer
 local function on_attach(client, buf)
+  local symbols_supported =
+    client.supports_method('textDocument/documentSymbol')
+  if symbols_supported then
+    navic.attach(client, buf)
+  end
+
   U.disable_formatting(client)
   U.mappings(buf)
 end
@@ -43,7 +50,7 @@ vim.diagnostic.config({
 })
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  focusable = false,
+  focusable = true,
   style = 'minimal',
   border = 'rounded',
 })
@@ -54,11 +61,18 @@ vim.lsp.handlers['textDocument/signatureHelp'] =
     borer = 'rounded',
   })
 
+lsp.clangd.setup({
+  on_attach = function(client, buf)
+    navic.attach(client, buf)
+    U.mappings(buf)
+  end,
+})
+
 -- Lua
 lsp.sumneko_lua.setup({
   flags = flags,
-  capabilities = capabilities,
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       completion = {
@@ -86,6 +100,7 @@ lsp.sumneko_lua.setup({
 })
 
 lsp.jsonls.setup({
+  on_attach = on_attach,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
@@ -110,6 +125,7 @@ lsp.omnisharp.setup({
   cmd = {
     '/Users/artemson/.local/share/nvim/mason/bin/omnisharp-mono',
   },
+  on_attach = on_attach,
 
   -- Enables support for reading code style, naming convention and analyzer
   -- settings from .editorconfig.
@@ -155,10 +171,9 @@ local servers = {
   'html', -- HTML
   'cssls', -- CSS
   'yamlls', -- YAML
-  'emmet_ls', -- emmet-ls
-  'clangd',
   'cmake',
-  'jedi_language_server',
+  'pyright',
+  'dockerls',
   -- 'terraformls', -- Terraform
 }
 

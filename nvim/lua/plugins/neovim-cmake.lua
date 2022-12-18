@@ -37,4 +37,4 @@ require('cmake').setup({
 
 vim.keymap.set('n', '<leader>cg', '<CMD>CMake<CR>')
 vim.keymap.set('n', '<leader>cb', '<CMD>CMake build_all<CR>')
-vim.keymap.set('n', '<leader>cr', '<CMD>CMake run<CR>')
+vim.keymap.set('n', '<leader>cr', '<CMD>CMake build_and_run<CR>')

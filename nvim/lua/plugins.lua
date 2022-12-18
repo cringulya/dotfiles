@@ -216,6 +216,7 @@ return require('packer').startup(function(use)
   use({
     'neovim/nvim-lspconfig',
     event = 'BufRead',
+    after = 'nvim-navic',
     config = function()
       require('lsp.servers')
     end,
@@ -223,6 +224,7 @@ return require('packer').startup(function(use)
       {
         -- WARN: Unfortunately we won't be able to lazy load this
         'hrsh7th/cmp-nvim-lsp',
+        'SmiteshP/nvim-navic',
       },
     },
   })
@@ -342,11 +344,18 @@ return require('packer').startup(function(use)
       require('plugins.illuminate')
     end,
   })
-  use({
-    'SmiteshP/nvim-navic',
-    requires = 'neovim/nvim-lspconfig',
-    config = function()
-      require('nvim-navic').setup()
-    end,
-  })
+  --
+  -- use({
+  --   'SmiteshP/nvim-navic',
+  --   requires = 'neovim/nvim-lspconfig',
+  --   config = function()
+  --     require('nvim-navic').setup({
+  --       highlight = false,
+  --       separator = ' > ',
+  --       depth_limit = 0,
+  --       depth_limit_indicator = '..',
+  --       safe_output = true,
+  --     })
+  --   end,
+  -- })
 end)

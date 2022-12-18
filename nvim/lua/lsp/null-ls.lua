@@ -27,7 +27,6 @@ nls.setup({
     --         '--arrow-parens=always',
     --     },
     -- }),
-    fmt.clang_format,
     fmt.rustfmt,
     fmt.stylua,
     fmt.gofmt,
@@ -51,11 +50,7 @@ nls.setup({
   },
 
   on_attach = function(client, bufnr)
-    -- U.fmt_on_save(client, bufnr)
+    U.fmt_on_save(client, bufnr)
     U.mappings(bufnr)
-    local navic = require('nvim-navic')
-    if client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
   end,
 })

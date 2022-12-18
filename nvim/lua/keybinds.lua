@@ -20,6 +20,7 @@ map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 map('n', '<C-h>', '<C-w>h')
 map('n', '<ESC>', '<CMD>cclose<CR><CMD>NvimTreeClose<CR>')
+map('n', 'q', '<cmd>cclose<cr>')
 
 vim.cmd([[
 function! ToggleQuickFix()
@@ -30,7 +31,7 @@ function! ToggleQuickFix()
     endif
 endfunction
 
-nnoremap <silent> <c-m> :call ToggleQuickFix()<CR>
+nnoremap <silent> <c-q> :call ToggleQuickFix()<CR>
 ]])
 
 vim.cmd([[
