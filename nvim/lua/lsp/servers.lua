@@ -20,6 +20,7 @@ local function on_attach(client, buf)
     client.supports_method('textDocument/documentSymbol')
   if symbols_supported then
     navic.attach(client, buf)
+    vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
   end
 
   U.disable_formatting(client)
@@ -174,6 +175,7 @@ local servers = {
   'cmake',
   'pyright',
   'dockerls',
+  'marksman',
   -- 'terraformls', -- Terraform
 }
 

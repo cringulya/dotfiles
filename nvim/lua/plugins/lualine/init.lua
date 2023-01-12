@@ -1,5 +1,6 @@
 local M = {}
 local components = require('plugins.lualine.components')
+local navic = require('nvim-navic')
 
 M.config = {
   options = {
