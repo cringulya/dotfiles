@@ -37,9 +37,9 @@ local function list_registered_linters(filetype)
 end
 
 local function env_cleanup(venv)
-  if string.find(venv, "/") then
+  if string.find(venv, '/') then
     local final_venv = venv
-    for w in venv:gmatch "([^/]+)" do
+    for w in venv:gmatch('([^/]+)') do
       final_venv = w
     end
     venv = final_venv
@@ -63,7 +63,7 @@ local branch = lv_icons.git.Branch
 return {
   mode = {
     function()
-      return ' ' .. lv_icons.ui.Target .. ' '
+      return ' ' .. lv_icons.git.Octoface .. ' '
     end,
     padding = { left = 0, right = 0 },
     color = {},
@@ -102,10 +102,7 @@ return {
         if venv then
           local icons = require('nvim-web-devicons')
           local py_icon, _ = icons.get_icon('.py')
-          return string.format(
-            ' ' .. py_icon .. ' (%s)',
-            env_cleanup(venv)
-          )
+          return string.format(' ' .. py_icon .. ' (%s)', env_cleanup(venv))
         end
       end
       return ''

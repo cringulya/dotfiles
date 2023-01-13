@@ -1,10 +1,9 @@
 local M = {}
 local components = require('plugins.lualine.components')
-local navic = require('nvim-navic')
 
 M.config = {
   options = {
-    theme = 'auto',
+    theme = 'palenight',
     globalstatus = true,
     icons_enabled = true,
     component_separators = { left = '', right = '' },
@@ -19,19 +18,16 @@ M.config = {
       components.branch,
     },
     lualine_c = {
+      components.filename,
       components.diff,
       components.python_env,
     },
     lualine_x = {
-      components.diagnostics,
       components.lsp,
-      components.spaces,
-      components.filetype,
+      components.diagnostics,
     },
-    lualine_y = { components.location },
-    lualine_z = {
-      components.progress,
-    },
+    lualine_y = { components.filetype },
+    lualine_z = { components.location },
   },
   inactive_sections = {
     lualine_a = {
@@ -45,14 +41,16 @@ M.config = {
       components.python_env,
     },
     lualine_x = {
-      components.diagnostics,
       components.lsp,
-      components.spaces,
-      components.filetype,
+      components.diagnostics,
     },
-    lualine_y = { components.location },
+    lualine_y = {
+      -- components.location
+      components.scrollbar,
+    },
     lualine_z = {
-      components.progress,
+      -- components.progress,
+      components.location,
     },
   },
   tabline = {},
