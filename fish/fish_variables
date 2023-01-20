@@ -6,6 +6,7 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fish
 SETUVAR _fisher_jorgebucaran_2F_hydro_files:\x7e/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/hydro\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejustinmayer/virtualfish\x1ejorgebucaran/hydro\x1eedouard\x2dlopez/ayu\x2dtheme\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR _hydro_git_10065:main\u2022\x20
 SETUVAR _hydro_git_10210:main\u2022\x20
 SETUVAR _hydro_git_12527:main\u2022\x20
 SETUVAR _hydro_git_14792:main\u2022\x20
@@ -26,6 +27,7 @@ SETUVAR _hydro_git_38414:main\u2022\x20
 SETUVAR _hydro_git_40099:develop\u2022\x20
 SETUVAR _hydro_git_40116:main\u2022\x20
 SETUVAR _hydro_git_42152:develop\u2022\x20
+SETUVAR _hydro_git_42247:main\x20
 SETUVAR _hydro_git_47862:main\u2022\x20
 SETUVAR _hydro_git_49549:develop\u2022\x20
 SETUVAR _hydro_git_50045:develop\u2022\x20
@@ -34,11 +36,11 @@ SETUVAR _hydro_git_52411:main\u2022\x20
 SETUVAR _hydro_git_53428:main\u2022\x20
 SETUVAR _hydro_git_5439:main\u2022\x20
 SETUVAR _hydro_git_54501:main\u2022\x20
-SETUVAR _hydro_git_55469:main\u2022\x20
 SETUVAR _hydro_git_56578:main\u2022\x20
 SETUVAR _hydro_git_57845:develop\u2022\x20
 SETUVAR _hydro_git_59713:main\u2022\x20
 SETUVAR _hydro_git_59936:main\u2022\x20
+SETUVAR _hydro_git_65768:main\x20
 SETUVAR _hydro_git_66003:main\u2022\x20
 SETUVAR _hydro_git_66319:develop\u2022\x20
 SETUVAR _hydro_git_67212:main\u2022\x20
@@ -48,7 +50,8 @@ SETUVAR _hydro_git_71643:main\u2022\x20
 SETUVAR _hydro_git_71685:main\u2022\x20
 SETUVAR _hydro_git_72678:develop\u2022\x20
 SETUVAR _hydro_git_73399:main\u2022\x20
-SETUVAR _hydro_git_81635:main\u2022\x20
+SETUVAR _hydro_git_77299:master\x20\u2191272\x20
+SETUVAR _hydro_git_81635:\x1d
 SETUVAR _hydro_git_85117:main\u2022\x20
 SETUVAR _hydro_git_87665:develop\u2022\x20
 SETUVAR _hydro_git_88746:develop\u2022\x20

@@ -31,8 +31,8 @@ M.config = {
     window = {
       border = 'single', -- none, single, double, shadow
       position = 'bottom', -- bottom, top
-      margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-      padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+      margin = { 0, 70, 0, 0 }, -- extra window margin [top, right, bottom, left]
+      padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
       winblend = 0,
     },
     layout = {
@@ -87,7 +87,6 @@ M.config = {
       'Comment toggle current line',
     },
     ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
-    ['e'] = { '<cmd>NvimTreeToggle<CR>', 'Explorer' },
     b = {
       name = 'Buffers',
       j = { '<cmd>BufferLinePick<cr>', 'Jump' },
@@ -219,7 +218,7 @@ M.config = {
         '<cmd>edit ~/.config/nvim/init.lua<cr>',
         'Edit init.lua',
       },
-      k = { '<cmd>Telescope keymaps<cr>', "View keymappings" },
+      k = { '<cmd>Telescope keymaps<cr>', 'View keymappings' },
       l = {
         name = '+logs',
         L = {
