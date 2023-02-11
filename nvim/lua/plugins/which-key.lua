@@ -82,6 +82,7 @@ M.config = {
   mappings = {
     [';'] = { '<cmd>Dashboard<CR>', 'Dashboard' },
     ['w'] = { '<cmd>w!<CR>', 'Save' },
+    ['f'] = { '<cmd>Telescope git_files<cr>', 'Telescope git files' },
     ['/'] = {
       '<Plug>(comment_toggle_linewise_current)',
       'Comment toggle current line',

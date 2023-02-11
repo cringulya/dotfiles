@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
 
   use('nvim-lua/plenary.nvim')
 
+  use('famiu/nvim-reload')
+
   ----------------------------------------
   -- Theme, Icons, Statusbar, Bufferbar --
   ----------------------------------------
@@ -269,12 +271,12 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use({
-    'tpope/vim-dispatch',
-    config = function()
-      require('plugins.vim-dispatch')
-    end,
-  })
+  -- use({
+  --   'tpope/vim-dispatch',
+  --   config = function()
+  --     require('plugins.vim-dispatch')
+  --   end,
+  -- })
 
   use({
     'christoomey/vim-tmux-navigator',
@@ -287,6 +289,31 @@ return require('packer').startup(function(use)
   ------------------
   -------C/C++------
   ------------------
+
+  use({
+    'CRAG666/code_runner.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      vim.keymap.set(
+        'n',
+        '`<cr>',
+        ':RunCode<CR>',
+        { noremap = true, silent = false }
+      )
+      require('code_runner').setup({
+        startinsert = true,
+        -- put here the commands by filetype
+        filetype = {
+          java = 'cd $dir && javac $fileName && java $fileNameWithoutExt',
+          python = 'python3 $dir/$fileName',
+          typescript = 'deno run',
+          rust = 'cd $dir && rustc $fileName && $dir/$fileNameWithoutExt',
+          cpp = 'cd $dir && g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt',
+          c = 'cd $dir && gcc -fsanitize=address -Wall -Wextra -Wshadow -O2 -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt',
+        },
+      })
+    end,
+  })
 
   use({
     'Shatur/neovim-cmake',

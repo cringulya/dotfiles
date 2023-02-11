@@ -37,3 +37,5 @@ nnoremap <silent> <c-q> :call ToggleQuickFix()<CR>
 vim.cmd([[
   set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 ]])
+
+map('n', ':й', ':q')
