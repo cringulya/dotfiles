@@ -17,6 +17,9 @@ require('luasnip').setup({
 
 -- Loading any vscode snippets from plugins
 require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load({
+  paths = '~/.config/nvim/snippets',
+})
 
 -- Allow jsx and tsx to use js snippets
 require('luasnip').filetype_extend(
@@ -25,9 +28,9 @@ require('luasnip').filetype_extend(
 )
 
 -- Mappins to move around inside snippets
-vim.keymap.set({ 'i', 's' }, '<C-l>', '<CMD>lua require("luasnip").jump(1)<CR>')
+vim.keymap.set({ 'i', 's' }, '<c-l>', '<CMD>lua require("luasnip").jump(1)<CR>')
 vim.keymap.set(
   { 'i', 's' },
-  '<C-h>',
+  '<c-h>',
   '<CMD>lua require("luasnip").jump(-1)<CR>'
 )

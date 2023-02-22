@@ -1,0 +1,21 @@
+{
+  "snip1": {
+    "prefix": "beg",
+    "body": [
+      "#include <iostream>",
+      "#include <algorithm>",
+      "#include <vector>",
+      "#include <map>",
+      "#include <stack>",
+      "#include <queue>",
+      "#include <string>",
+      "",
+      "using namespace std;",
+      "typedef long long ll;",
+      "",
+      "int32_t main() {",
+      "  $0",
+      "}"
+    ]
+  }
+}

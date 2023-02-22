@@ -36,12 +36,12 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use({
-    'glepnir/dashboard-nvim',
-    config = function()
-      require('plugins.dashboard-nvim')
-    end,
-  })
+  -- use({
+  --   'glepnir/dashboard-nvim',
+  --   config = function()
+  --     require('plugins.dashboard-nvim')
+  --   end,
+  -- })
 
   use({
     {
@@ -110,6 +110,14 @@ return require('packer').startup(function(use)
   --------------------------
   -- Editor UI Niceties --
   --------------------------
+
+  use({
+    'christoomey/vim-tmux-navigator',
+    config = function()
+      vim.g.tmux_navigator_save_on_switch = 2
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+    end,
+  })
 
   use({
     'lukas-reineke/indent-blankline.nvim',
@@ -189,11 +197,20 @@ return require('packer').startup(function(use)
   -- Terminal --
   --------------
 
+  -- use({
+  --   'numToStr/FTerm.nvim',
+  --   event = 'CursorHold',
+  --   config = function()
+  --     require('plugins.fterm')
+  --   end,
+  -- })
   use({
-    'numToStr/FTerm.nvim',
-    event = 'CursorHold',
+    'akinsho/toggleterm.nvim',
+    tag = '*',
     config = function()
-      require('plugins.fterm')
+      require('toggleterm').setup()
+      vim.keymap.set('n', '<c-t>', '<cmd>ToggleTerm<cr>', { silent = true })
+      vim.keymap.set('t', '<c-t>', '<cmd>ToggleTerm<cr>', { silent = true })
     end,
   })
 
@@ -278,40 +295,28 @@ return require('packer').startup(function(use)
   --   end,
   -- })
 
+  -- SchemaStore
   use({
-    'christoomey/vim-tmux-navigator',
-    config = function()
-      vim.g.tmux_navigator_save_on_switch = 2
-      vim.g.tmux_navigator_disable_when_zoomed = 1
-    end,
+    'b0o/schemastore.nvim',
   })
 
   ------------------
-  -------C/C++------
+  -------CODE------
   ------------------
 
   use({
     'CRAG666/code_runner.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      vim.keymap.set(
-        'n',
-        '`<cr>',
-        ':RunCode<CR>',
-        { noremap = true, silent = false }
-      )
-      require('code_runner').setup({
-        startinsert = true,
-        -- put here the commands by filetype
-        filetype = {
-          java = 'cd $dir && javac $fileName && java $fileNameWithoutExt',
-          python = 'python3 $dir/$fileName',
-          typescript = 'deno run',
-          rust = 'cd $dir && rustc $fileName && $dir/$fileNameWithoutExt',
-          cpp = 'cd $dir && g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt',
-          c = 'cd $dir && gcc -fsanitize=address -Wall -Wextra -Wshadow -O2 -o $fileNameWithoutExt $fileName && ./$fileNameWithoutExt',
-        },
-      })
+      require('plugins.code_runner')
+    end,
+  })
+
+  use({
+    'rcarriga/nvim-dap-ui',
+    requires = { 'mfussenegger/nvim-dap' },
+    config = function()
+      require('plugins.dap')
     end,
   })
 
@@ -322,14 +327,16 @@ return require('packer').startup(function(use)
     end,
   })
 
+  use({ 'ianding1/leetcode.vim' })
+
   -- lvim
-  -- use({
-  --   'christianchiarulli/lir.nvim',
-  --   config = function()
-  --     require('plugins.lir')
-  --   end,
-  --   requires = { 'kyazdani42/nvim-web-devicons' },
-  -- })
+  use({
+    'christianchiarulli/lir.nvim',
+    config = function()
+      require('plugins.lir')
+    end,
+    requires = { 'kyazdani42/nvim-web-devicons' },
+  })
 
   use({
     'folke/which-key.nvim',
@@ -338,16 +345,16 @@ return require('packer').startup(function(use)
     end,
     event = 'BufWinEnter',
   })
-  use( -- project.nvim
-    {
-      'ahmedkhalf/project.nvim',
-      config = function()
-        require('plugins.project')
-        require('telescope').load_extension('projects')
-      end,
-      after = 'telescope.nvim',
-    }
-  )
+
+  -- project.nvim
+  use({
+    'ahmedkhalf/project.nvim',
+    config = function()
+      require('plugins.project')
+      require('telescope').load_extension('projects')
+    end,
+    after = 'telescope.nvim',
+  })
 
   use({
     'akinsho/bufferline.nvim',
@@ -356,11 +363,6 @@ return require('packer').startup(function(use)
     end,
     branch = 'main',
     event = 'BufWinEnter',
-  })
-
-  -- SchemaStore
-  use({
-    'b0o/schemastore.nvim',
   })
 
   use({

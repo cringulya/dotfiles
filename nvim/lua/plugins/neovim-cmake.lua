@@ -21,7 +21,7 @@ require('cmake').setup({
   end,
   quickfix = {
     pos = 'botright', -- Where to open quickfix
-    height = 5, -- Height of the opened quickfix.
+    height = 10, -- Height of the opened quickfix.
     only_on_error = false, -- Open quickfix window only if target build failed.
   },
   copy_compile_commands = true, -- Copy compile_commands.json to current working directory.

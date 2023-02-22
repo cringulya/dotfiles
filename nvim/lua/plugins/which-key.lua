@@ -43,13 +43,14 @@ M.config = {
     },
     hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ' }, -- hide mapping boilerplate
     ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-    show_help = true, -- show help message on the command line when the popup is visible
+    show_help = false, -- show help message on the command line when the popup is visible
     triggers = 'auto', -- automatically setup triggers
     -- triggers = {"<leader>"} -- or specify a list manually
     triggers_blacklist = {
       -- list of mode / prefixes that should never be hooked by WhichKey
       -- this is mostly relevant for key maps that start with a native binding
       -- most people should not need to change this
+      n = { ':' },
       i = { 'j', 'k' },
       v = { 'j', 'k' },
     },
@@ -107,7 +108,6 @@ M.config = {
       },
       D = {
         '<cmd>BufferLineSortByDirectory<cr>',
-        'Sort by directory',
       },
       L = {
         '<cmd>BufferLineSortByExtension<cr>',
@@ -213,25 +213,43 @@ M.config = {
       },
       e = { '<cmd>Telescope quickfix<cr>', 'Telescope Quickfix' },
     },
-    L = {
+    n = {
       name = '+Config',
+      s = {
+        name = '+Snippets',
+        u = {
+          '<cmd>source ~/.config/nvim/lua/lsp/luasnip.lua<cr>',
+          'Update snippets',
+        },
+        s = {
+          '<cmd>e ~/.config/nvim/snippets/all.lua<cr>',
+          'Edit snippets',
+        },
+      },
+
       c = {
         '<cmd>edit ~/.config/nvim/init.lua<cr>',
         'Edit init.lua',
       },
+
       k = { '<cmd>Telescope keymaps<cr>', 'View keymappings' },
+
       l = {
         name = '+logs',
         L = {
           "<cmd>lua vim.fn.execute('edit ' .. vim.lsp.get_log_path())<cr>",
           'Open the LSP logfile',
         },
+
         N = { '<cmd>edit $NVIM_LOG_FILE<cr>', 'Open the Neovim logfile' },
+
         P = {
           '<cmd>edit $LUNARVIM_CACHE_DIR/packer.nvim.log<cr>',
           'Open the Packer logfile',
         },
       },
+
+      u = { '<cmd>Restart<cr><cmd>PackerCompile<cr>', 'Update config' },
     },
     s = {
       name = 'Search',

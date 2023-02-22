@@ -1,10 +1,10 @@
-vim.opt.guifont = { 'Iosevka Nerd Font Mono', 'h20' }
-
 if vim.g.neovide then
+  vim.opt.guifont = { 'Iosevka Nerd Font Mono', 'h20' }
   vim.g.neovide_input_use_logo = true -- enable use of the logo (cmd) key
   vim.g.neovide_refresh_rate = 60
   vim.g.neovide_input_macos_alt_is_meta = false
   vim.g.neovide_fullscreen = 1
+  vim.opt.linespace = 12
 
   vim.keymap.set({ 'n', 'i', 'v' }, '<D-C-f>', function()
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
@@ -41,12 +41,17 @@ if vim.g.neovide then
     '<C-R>+',
     { noremap = true, silent = true }
   )
-  vim.api.nvim_set_keymap(
-    't',
-    '<D-v>',
-    '<C-R>+',
-    { noremap = true, silent = true }
-  )
+  vim.cmd([[
+  tnoremap <expr> <D-v> '<C-\><C-N>"+pi'
+  ]])
+
+  -- vim.api.nvim_set_keymap(
+  --   't',
+  --   '<D-v>',
+  --   '<C-><C-N>"+pi',
+  --   { noremap = true, silent = true }
+  -- )
+  --
   vim.api.nvim_set_keymap(
     'v',
     '<D-v>',

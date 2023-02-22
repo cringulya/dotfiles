@@ -2,6 +2,10 @@ local function map(m, k, v)
   vim.keymap.set(m, k, v, { silent = true })
 end
 
+-- -- Terminal
+--
+-- map('n', '<C-t>', '<cmd>split term<cr>i')
+
 -- Move to the next/previous buffer
 map('n', '<TAB>', '<CMD>bn<CR>')
 map('n', '<s-TAB>', '<CMD>bp<CR>')

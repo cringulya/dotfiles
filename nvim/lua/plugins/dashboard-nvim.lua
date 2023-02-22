@@ -19,10 +19,11 @@ db.custom_header = {
   '⣿⣿⣷⡈⢷⡀⠙⠛⠻⠿⠿⠿⠿⠿⠷⠾⠿⠟⣛⣋⣥⣶⣄⠄⢀⣄⠹⣦⢹⣿',
   '',
 }
+
 db.custom_center = {
   {
     icon = nil,
-    desc = 'kekis',
+    desc = 'heheheh',
     shortcut = nil,
     action = nil,
   },
