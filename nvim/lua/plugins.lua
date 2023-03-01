@@ -36,12 +36,16 @@ return require('packer').startup(function(use)
     end,
   })
 
-  -- use({
-  --   'glepnir/dashboard-nvim',
-  --   config = function()
-  --     require('plugins.dashboard-nvim')
-  --   end,
-  -- })
+  use({
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup({
+        -- config
+      })
+    end,
+    requires = { 'nvim-tree/nvim-web-devicons' },
+  })
 
   use({
     {
@@ -52,6 +56,7 @@ return require('packer').startup(function(use)
         require('plugins.lualine').setup()
       end,
     },
+
     {
       'j-hui/fidget.nvim',
       after = 'lualine.nvim',
@@ -110,6 +115,8 @@ return require('packer').startup(function(use)
   --------------------------
   -- Editor UI Niceties --
   --------------------------
+
+  use({ 'stevearc/dressing.nvim' })
 
   use({
     'christoomey/vim-tmux-navigator',
@@ -197,20 +204,30 @@ return require('packer').startup(function(use)
   -- Terminal --
   --------------
 
-  -- use({
-  --   'numToStr/FTerm.nvim',
-  --   event = 'CursorHold',
-  --   config = function()
-  --     require('plugins.fterm')
-  --   end,
-  -- })
   use({
-    'akinsho/toggleterm.nvim',
-    tag = '*',
+    'CRAG666/betterTerm.nvim',
     config = function()
-      require('toggleterm').setup()
-      vim.keymap.set('n', '<c-t>', '<cmd>ToggleTerm<cr>', { silent = true })
-      vim.keymap.set('t', '<c-t>', '<cmd>ToggleTerm<cr>', { silent = true })
+      local betterTerm = require('betterTerm')
+      vim.keymap.set('n', '`<cr>', function()
+        require('betterTerm').send(
+          require('code_runner.commands').get_filetype_command(),
+          1,
+          { clean = true, interrupt = true }
+        )
+        betterTerm.open(1)
+      end, { desc = 'Excute File' })
+      vim.keymap.set(
+        { 'n', 't' },
+        '<C-m>',
+        betterTerm.open,
+        { desc = 'Open terminal' }
+      )
+      betterTerm.setup({
+        prefix = 'Term_',
+        startInserted = false,
+        position = 'bot',
+        size = 18,
+      })
     end,
   })
 
@@ -288,13 +305,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-  -- use({
-  --   'tpope/vim-dispatch',
-  --   config = function()
-  --     require('plugins.vim-dispatch')
-  --   end,
-  -- })
-
   -- SchemaStore
   use({
     'b0o/schemastore.nvim',
@@ -303,6 +313,24 @@ return require('packer').startup(function(use)
   ------------------
   -------CODE------
   ------------------
+
+  use({
+    'AckslD/swenv.nvim',
+    config = function()
+      require('swenv').setup({
+        -- Should return a list of tables with a `name` and a `path` entry each.
+        -- Gets the argument `venvs_path` set below.
+        -- By default just lists the entries in `venvs_path`.
+        get_venvs = function(venvs_path)
+          return require('swenv.api').get_venvs(venvs_path)
+        end,
+        -- Path passed to `get_venvs`.
+        venvs_path = vim.fn.expand('~/.virtualenvs'),
+        -- Something to do after setting an environment
+        post_set_venv = nil,
+      })
+    end,
+  })
 
   use({
     'CRAG666/code_runner.nvim',
@@ -329,14 +357,7 @@ return require('packer').startup(function(use)
 
   use({ 'ianding1/leetcode.vim' })
 
-  -- lvim
-  use({
-    'christianchiarulli/lir.nvim',
-    config = function()
-      require('plugins.lir')
-    end,
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  })
+  -- from lvim
 
   use({
     'folke/which-key.nvim',
@@ -346,7 +367,6 @@ return require('packer').startup(function(use)
     event = 'BufWinEnter',
   })
 
-  -- project.nvim
   use({
     'ahmedkhalf/project.nvim',
     config = function()
@@ -372,14 +392,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-  -- Markdown
-  use({
-    'iamcco/markdown-preview.nvim',
-    run = function()
-      vim.fn['mkdp#util#install']()
-    end,
-  })
-  --
   use({
     'SmiteshP/nvim-navic',
     requires = 'neovim/nvim-lspconfig',

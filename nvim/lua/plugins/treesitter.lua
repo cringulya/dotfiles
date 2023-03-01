@@ -1,7 +1,7 @@
 -- Treesitter folds
--- vim.o.foldmethod = 'expr'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.o.foldlevelstart = 99
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevelstart = 89
 
 require('nvim-treesitter.configs').setup({
   -- nvim-treesitter/nvim-treesitter (self config)
@@ -24,7 +24,7 @@ require('nvim-treesitter.configs').setup({
     'tsx',
     'vim',
     'python',
-    'typescript'
+    'typescript',
   },
   highlight = {
     enable = true,
@@ -76,16 +76,16 @@ require('nvim-treesitter.configs').setup({
     },
     swap = {
       enable = true,
-    --   swap_next = {
-    --     ['<leader>a'] = '@parameter.inner',
-    --     ['<leader>f'] = '@function.outer',
-    --     ['<leader>e'] = '@element',
-    --   },
-    --   swap_previous = {
-    --     ['<leader>A'] = '@parameter.inner',
-    --     ['<leader>F'] = '@function.outer',
-    --     ['<leader>E'] = '@element',
-    --   },
+      --   swap_next = {
+      --     ['<leader>a'] = '@parameter.inner',
+      --     ['<leader>f'] = '@function.outer',
+      --     ['<leader>e'] = '@element',
+      --   },
+      --   swap_previous = {
+      --     ['<leader>A'] = '@parameter.inner',
+      --     ['<leader>F'] = '@function.outer',
+      --     ['<leader>E'] = '@element',
+      --   },
     },
     move = {
       enable = true,

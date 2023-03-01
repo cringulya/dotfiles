@@ -3,7 +3,7 @@ if vim.g.neovide then
   vim.g.neovide_input_use_logo = true -- enable use of the logo (cmd) key
   vim.g.neovide_refresh_rate = 60
   vim.g.neovide_input_macos_alt_is_meta = false
-  vim.g.neovide_fullscreen = 1
+  -- vim.g.neovide_fullscreen = 1
   vim.opt.linespace = 12
 
   vim.keymap.set({ 'n', 'i', 'v' }, '<D-C-f>', function()

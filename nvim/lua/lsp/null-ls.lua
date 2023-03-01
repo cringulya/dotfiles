@@ -31,7 +31,9 @@ nls.setup({
     fmt.stylua,
     fmt.gofmt,
     fmt.zigfmt,
-    fmt.black,
+    fmt.black.with({
+      extra_args = { '--preview' },
+    }),
     fmt.shfmt.with({
       extra_args = { '-i', 4, '-ci', '-sr' },
     }),
@@ -42,7 +44,7 @@ nls.setup({
     dgn.luacheck.with({
       extra_args = { '--globals', 'vim', '--std', 'luajit' },
     }),
-    dgn.flake8,
+    -- dgn.flake8,
     ------------------
     -- CODE ACTIONS --
     ------------------

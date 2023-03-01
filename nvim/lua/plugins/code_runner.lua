@@ -1,6 +1,7 @@
-vim.keymap.set('n', '`<cr>', ':RunCode<CR>', { noremap = true, silent = false })
+-- vim.keymap.set('n', '`<cr>', ':RunCode<CR>', { noremap = true, silent = true })
 
 require('code_runner').setup({
+  mode = toggleterm,
   startinsert = true,
   -- put here the commands by filetype
   filetype = {

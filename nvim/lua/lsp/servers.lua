@@ -63,7 +63,6 @@ vim.lsp.handlers['textDocument/signatureHelp'] =
     border = 'rounded',
   })
 
--- clangd
 local ls = require('luasnip')
 local s = ls.snippet
 local r = ls.restore_node
@@ -73,6 +72,7 @@ local c = ls.choice_node
 
 lspsnips = {}
 
+-- clangd
 lsp.clangd.setup({
   on_attach = function(client, buf)
     navic.attach(client, buf)
@@ -246,6 +246,7 @@ local servers = {
   'cssls', -- CSS
   'yamlls', -- YAML
   'cmake',
+  -- 'jedi_language_server',
   'pyright',
   'dockerls',
   'marksman',

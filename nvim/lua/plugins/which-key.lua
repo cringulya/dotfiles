@@ -213,6 +213,13 @@ M.config = {
       },
       e = { '<cmd>Telescope quickfix<cr>', 'Telescope Quickfix' },
     },
+    c = {
+      name = '+Code',
+      e = {
+        "<cmd>lua require('swenv.api').pick_venv()<cr>",
+        'Pick virtual-env',
+      },
+    },
     n = {
       name = '+Config',
       s = {
