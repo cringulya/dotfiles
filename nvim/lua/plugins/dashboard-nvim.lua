@@ -2,6 +2,8 @@ local db = require('dashboard')
 -- macos
 db.setup({
   theme = 'hyper',
+  disable_move = true, --  defualt is false disable move keymap for hyper
+  shortcut_type = 'number',
   config = {
     week_header = {
       enable = true,
@@ -34,5 +36,6 @@ db.setup({
         key = 'd',
       },
     },
+    footer = {}, -- footer
   },
 })

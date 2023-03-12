@@ -40,9 +40,7 @@ return require('packer').startup(function(use)
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
     config = function()
-      require('dashboard').setup({
-        -- config
-      })
+      require('plugins.dashboard-nvim')
     end,
     requires = { 'nvim-tree/nvim-web-devicons' },
   })
@@ -207,27 +205,7 @@ return require('packer').startup(function(use)
   use({
     'CRAG666/betterTerm.nvim',
     config = function()
-      local betterTerm = require('betterTerm')
-      vim.keymap.set('n', '`<cr>', function()
-        require('betterTerm').send(
-          require('code_runner.commands').get_filetype_command(),
-          1,
-          { clean = true, interrupt = true }
-        )
-        betterTerm.open(1)
-      end, { desc = 'Excute File' })
-      vim.keymap.set(
-        { 'n', 't' },
-        '<C-m>',
-        betterTerm.open,
-        { desc = 'Open terminal' }
-      )
-      betterTerm.setup({
-        prefix = 'Term_',
-        startInserted = false,
-        position = 'bot',
-        size = 18,
-      })
+      require('plugins.term')
     end,
   })
 
