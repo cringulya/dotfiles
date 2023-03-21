@@ -1,7 +1,13 @@
--- vim.keymap.set('n', '`<cr>', ':RunCode<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '`<cr>', ':RunCode<CR>', { noremap = true, silent = true })
 
 require('code_runner').setup({
-  mode = toggleterm,
+  -- mode = 'toggleterm',
+  mode = 'toggle',
+  float = {
+    border = 'rounded',
+    height = 1,
+    width = 1,
+  },
   startinsert = true,
   -- put here the commands by filetype
   filetype = {
@@ -12,4 +18,6 @@ require('code_runner').setup({
     cpp = 'cd $dir && mkdir -p build && g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -o ./build/$fileNameWithoutExt $fileName && ./build/$fileNameWithoutExt',
     c = 'cd $dir && mkdir -p build && gcc -fsanitize=address -Wall -Wextra -Wshadow -O2 -o ./build/$fileNameWithoutExt $fileName && ./build/$fileNameWithoutExt',
   },
+
+  project_path = vim.fn.expand('~/.config/nvim/project_manager.json'),
 })

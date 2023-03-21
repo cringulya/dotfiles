@@ -32,6 +32,8 @@ require('project_nvim').setup({
     'Makefile',
     'package.json',
     '.stylua.toml',
+    'requirements.txt',
+    'main.py',
   },
 
   ---@ Show hidden files in telescope when searching for files in a project

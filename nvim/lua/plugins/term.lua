@@ -1,28 +1,6 @@
-local betterTerm = require('betterTerm')
-
-betterTerm.setup({
-  prefix = 'Term_',
-  startInserted = true,
-  position = 'bot',
-  size = 15,
+require('toggleterm').setup({
+  start_in_insert = true,
 })
 
-vim.keymap.set('t', '<ESC>', '<C-\\><C-n><CR>')
-
-vim.keymap.set('n', '`<cr>', function()
-  require('betterTerm').send(
-    require('code_runner.commands').get_filetype_command(),
-    1,
-    { clean = true, interrupt = true }
-  )
-  betterTerm.open(1)
-end, { desc = 'Excute File' })
-
-vim.keymap.set(
-  { 'n', 't' },
-  '<C-m>',
-  betterTerm.open,
-  { desc = 'Open terminal' }
-)
-
-vim.keymap.del({ 't', 'n' }, '<cr>')
+vim.keymap.set({ 'n', 't' }, '<c-m>', '<cmd>ToggleTerm<cr>')
+vim.keymap.del({ 'n', 't' }, '<cr>')

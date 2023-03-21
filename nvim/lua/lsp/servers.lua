@@ -1,3 +1,4 @@
+require('neodev').setup({})
 local lsp = require('lspconfig')
 local U = require('lsp.utils')
 
@@ -262,17 +263,3 @@ local conf = {
 for _, server in ipairs(servers) do
   lsp[server].setup(conf)
 end
-
--- NOTE: Using `eslint_d` via `null-ls` bcz it is way fasterrrrrrr.
--- Eslint
---[[ lsp.eslint.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = on_attach,
-    settings = {
-        useESLintClass = true, -- Recommended for eslint >= 7
-        run = 'onSave', -- Run `eslint` after save
-    },
-    -- NOTE: `root_dir` is required to fix the monorepo issue
-    root_dir = require('lspconfig.util').find_git_ancestor,
-}) ]]

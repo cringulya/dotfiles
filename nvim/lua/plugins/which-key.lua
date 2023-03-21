@@ -193,6 +193,7 @@ M.config = {
         'Buffer Diagnostics',
       },
       w = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics' },
+      u = { '<cmd>LspRestart<cr>', 'Restart LSP' },
       i = { '<cmd>LspInfo<cr>', 'Info' },
       I = { '<cmd>Mason<cr>', 'Mason Info' },
       j = {
@@ -256,7 +257,7 @@ M.config = {
         },
       },
 
-      u = { '<cmd>Restart<cr><cmd>PackerCompile<cr>', 'Update config' },
+      u = { '<cmd>Restart<cr>', 'Update config' },
     },
     s = {
       name = 'Search',
