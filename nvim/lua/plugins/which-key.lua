@@ -134,14 +134,6 @@ M.config = {
       q = { "<cmd>lua require'dap'.close()<cr>", 'Quit' },
       U = { "<cmd>lua require'dapui'.toggle()<cr>", 'Toggle UI' },
     },
-    p = {
-      name = 'Packer',
-      c = { '<cmd>PackerCompile<cr>', 'Compile' },
-      i = { '<cmd>PackerInstall<cr>', 'Install' },
-      s = { '<cmd>PackerSync<cr>', 'Sync' },
-      S = { '<cmd>PackerStatus<cr>', 'Status' },
-      u = { '<cmd>PackerUpdate<cr>', 'Update' },
-    },
 
     -- " Available Debug Adapters:
     -- "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
@@ -250,11 +242,6 @@ M.config = {
         },
 
         N = { '<cmd>edit $NVIM_LOG_FILE<cr>', 'Open the Neovim logfile' },
-
-        P = {
-          '<cmd>edit $LUNARVIM_CACHE_DIR/packer.nvim.log<cr>',
-          'Open the Packer logfile',
-        },
       },
 
       u = { '<cmd>Restart<cr>', 'Update config' },

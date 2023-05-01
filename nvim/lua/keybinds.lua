@@ -7,9 +7,11 @@ end
 -- map('n', '<C-t>', '<cmd>split term<cr>i')
 
 -- Move to the next/previous buffer
-map('n', '<TAB>', '<CMD>bn<CR>')
-map('n', '<s-TAB>', '<CMD>bp<CR>')
+-- map('n', '<TAB>', '<CMD>bn<CR>')
+-- map('n', '<s-TAB>', '<CMD>bp<CR>')
 map('n', 'Q', '<CMD>bd!<CR>')
+map('n', 'H', '0')
+map('n', 'L', '$')
 
 -- reload config
 map('n', '<leader>uc', '<CMD>source ~/.config/nvim/init.lua<CR>')
@@ -21,10 +23,10 @@ map('n', '<C-\\>', '<CMD>vsplit<CR>')
 map('t', '<ESC>', '<C-\\><C-n><CR>')
 
 -- Maps this in tmux-navigator plugin
-map('n', '<C-j>', '<C-w>j')
-map('n', '<C-k>', '<C-w>k')
-map('n', '<C-l>', '<C-w>l')
-map('n', '<C-h>', '<C-w>h')
+-- map('n', '<C-j>', '<C-w>j')
+-- map('n', '<C-k>', '<C-w>k')
+-- map('n', '<C-l>', '<C-w>l')
+-- map('n', '<C-h>', '<C-w>h')
 --
 map('n', '<ESC>', '<CMD>cclose<CR><CMD>NvimTreeClose<CR>')
 -- map('n', 'q', '<cmd>cclose<cr>')

@@ -25,6 +25,7 @@ require('project_nvim').setup({
     '>sandbox',
     '>sonartem',
     '>modumlab',
+    '>notes',
     '_darcs',
     '.hg',
     '.bzr',

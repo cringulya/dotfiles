@@ -44,20 +44,18 @@ vim.cmd([[
 
 -- Better editing experience
 o.expandtab = true
--- o.smarttab = true
+o.smarttab = true
 o.cindent = true
--- o.autoindent = true
+o.autoindent = true
 o.wrap = true
-o.textwidth = 120
+o.textwidth = 80
 o.shiftwidth = 2
+o.tabstop = 2
 o.softtabstop = 2 -- If negative, shiftwidth value is used
 o.list = true
 o.listchars = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
 -- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
 -- o.formatoptions = 'qrn1'
-
--- Makes neovim and host OS clipboard play nicely with each other
--- o.clipboard = 'unnamedplus'
 
 -- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
@@ -97,5 +95,8 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 vim.cmd([[
-  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+  set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ
+  \;ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  \,фисвуапршолдьтщзйкыегмцчня
+  \;abcdefghijklmnopqrstuvwxyz
 ]])

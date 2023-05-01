@@ -61,6 +61,11 @@ require('lazy').setup({
   },
 
   {
+    'iamcco/markdown-preview.nvim',
+    build = 'cd app && yarn install',
+  },
+
+  {
     'nvim-lualine/lualine.nvim',
     event = 'BufEnter',
     config = function()
@@ -288,7 +293,11 @@ require('lazy').setup({
         -- Path passed to `get_venvs`.
         venvs_path = vim.fn.expand('~/.virtualenvs'),
         -- Something to do after setting an environment
-        post_set_venv = nil,
+        post_set_venv = function()
+          vim.cmd([[
+          :LspRestart<cr>
+          ]])
+        end,
       })
     end,
   },
@@ -301,6 +310,17 @@ require('lazy').setup({
   },
 
   { 'ianding1/leetcode.vim' },
+
+  {
+    'andymass/vim-matchup',
+    event = 'BufRead',
+    config = function()
+      vim.keymap.set({ 'n', 'x', 'o' }, '<TAB>', '<plug>(matchup-%)')
+      vim.keymap.set({ 'x', 'o' }, 'i<TAB>', '<plug>(matchup-i%)')
+      vim.keymap.set({ 'x', 'o' }, 'o<TAB>', '<plug>(matchup-o%)')
+      vim.g.matchup_override_vimtex = 1
+    end,
+  },
 
   {
     'akinsho/bufferline.nvim',
@@ -318,7 +338,18 @@ require('lazy').setup({
     end,
   },
 
-  { 'famiu/nvim-reload' },
+  {
+    'lervag/vimtex',
+    ft = 'tex',
+    config = function()
+      vim.cmd([[
+        let g:vimtex_mappings_prefix = "\l"
+        let g:vimtex_compiler_latexmk = {
+            \ 'build_dir' : './build',
+        \}
+      ]])
+    end,
+  },
 
   -----------------------------------
   -- Treesitter: Better Highlights --

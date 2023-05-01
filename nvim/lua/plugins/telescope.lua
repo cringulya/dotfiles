@@ -7,6 +7,7 @@ require('telescope').setup({
     prompt_prefix = ' ❯ ',
     initial_mode = 'insert',
     sorting_strategy = 'ascending',
+    results_title = '',
     layout_config = {
       prompt_position = 'top',
     },
@@ -19,6 +20,27 @@ require('telescope').setup({
         ['<C-s>'] = actions.send_selected_to_qflist,
         ['<C-q>'] = actions.send_to_qflist,
         ['<C-h>'] = lactions.toggle_preview,
+      },
+    },
+  },
+  pickers = {
+    buffers = {
+      theme = 'ivy',
+      layout_strategy = 'bottom_pane',
+      sort_mru = true,
+      sort_lastused = true,
+      ignore_current_buffer = false,
+      previewer = true,
+      prompt_title = false,
+      layout_config = {
+        height = 0.5,
+      },
+      mappings = {
+        i = {
+          ['<C-d>'] = actions.delete_buffer,
+          ['<C-j>'] = actions.move_selection_next,
+          ['<C-k>'] = actions.move_selection_previous,
+        },
       },
     },
   },
@@ -49,14 +71,13 @@ vim.keymap.set('n', '<leader>f', function()
   end
 end)
 
-vim.keymap.set('n', '<c-p>', Telescope.find_files)
 -- Get :help at the speed of light
 vim.keymap.set('n', '<leader>H', Telescope.help_tags)
 
 vim.keymap.set('n', '<leader>P', '<cmd>Telescope projects<cr>')
 
 -- Fuzzy find active buffers
-vim.keymap.set('n', "'b", Telescope.buffers)
+vim.keymap.set('n', '<leader>,', Telescope.buffers)
 
 -- Search for string
 vim.keymap.set('n', "'r", Telescope.live_grep)

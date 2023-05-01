@@ -18,6 +18,9 @@ nls.setup({
     -- 1. both needs to be enabled to so prettier can apply eslint fixes
     -- 2. prettierd should come first to prevent occassional race condition
     fmt.prettier,
+    fmt.latexindent.with({
+      extra_args = { '-c', '~/.local/share/nvim/mason/packages/latexindent/' },
+    }),
     fmt.eslint_d,
     -- fmt.prettier.with({
     --     extra_args = {

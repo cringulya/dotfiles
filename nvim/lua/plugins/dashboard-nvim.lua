@@ -87,6 +87,12 @@ db.setup({
     header = dashboard_custom_header4,
     week_header = {
       enable = false,
+      concat = '',
+      append = {
+        '',
+        '',
+        '',
+      },
     },
     center = {
       {

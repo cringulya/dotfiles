@@ -1,7 +1,7 @@
 if vim.g.neovide then
   vim.opt.guifont = { 'Iosevka Nerd Font Mono', 'h20' }
   vim.cmd([[
-  set guicursor-=a:blinkwait5-blinkon5-blinkoff5
+  au VimEnter,VimResume * set guicursor-=a:blinkwait5-blinkon5-blinkoff5
   ]])
   vim.g.neovide_input_use_logo = true -- enable use of the logo (cmd) key
   vim.g.neovide_refresh_rate = 60
@@ -15,7 +15,7 @@ if vim.g.neovide then
   end)
 
   -- Change scale
-  vim.g.neovide_scale_factor = 1.5
+  vim.g.neovide_scale_factor = 1.7
   local change_scale_factor = function(delta)
     vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
   end

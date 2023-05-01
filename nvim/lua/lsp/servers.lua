@@ -249,6 +249,7 @@ local servers = {
   'cmake',
   -- 'jedi_language_server',
   'pyright',
+  'texlab',
   'dockerls',
   'marksman',
   -- 'terraformls', -- Terraform

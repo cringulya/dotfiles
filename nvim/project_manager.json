@@ -6,5 +6,13 @@
   "~/polykek/metopt/lab2": {
     "name": "Metopt lab2",
     "file_name": "main.py"
+  },
+  "~/polykek/metopt/lab3": {
+    "name": "Metopt lab3",
+    "file_name": "main.py"
+  },
+  "~/polykek/tg-notifybot": {
+    "name": "Notify bot",
+    "file_name": "main.py"
   }
 }
