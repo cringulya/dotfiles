@@ -52,6 +52,7 @@ require('bufferline').setup({
   options = {
     mode = 'tabs', -- set to "tabs" to only show tabpages instead
     numbers = 'none', -- can be "none" | "ordinal" | "buffer_id" | "both" | function
+    -- style_preset = require('bufferline').style_preset.minimal,
     close_command = function(bufnr) -- can be a string | function, see "Mouse actions"
       M.buf_kill('bd', bufnr, false)
     end,

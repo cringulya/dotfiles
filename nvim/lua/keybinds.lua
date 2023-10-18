@@ -10,6 +10,7 @@ end
 -- map('n', '<TAB>', '<CMD>bn<CR>')
 -- map('n', '<s-TAB>', '<CMD>bp<CR>')
 map('n', 'Q', '<CMD>bd!<CR>')
+map('n', '<leader>bk', '<CMD>bd!<CR>')
 map('n', 'H', '0')
 map('n', 'L', '$')
 

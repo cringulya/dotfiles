@@ -343,9 +343,9 @@ require('lazy').setup({
     ft = 'tex',
     config = function()
       vim.cmd([[
-        let g:vimtex_mappings_prefix = "\l"
+        let g:vimtex_mappings_prefix = '\l'
         let g:vimtex_compiler_latexmk = {
-            \ 'build_dir' : './build',
+            \ 'build_dir' : './tex-build',
         \}
       ]])
     end,

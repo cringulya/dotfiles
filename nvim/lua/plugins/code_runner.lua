@@ -17,6 +17,7 @@ require('code_runner').setup({
     rust = 'cd $dir && rustc $fileName && $dir/$fileNameWithoutExt',
     cpp = 'cd $dir && mkdir -p build && g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -o ./build/$fileNameWithoutExt $fileName && ./build/$fileNameWithoutExt',
     c = 'cd $dir && mkdir -p build && gcc -fsanitize=address -Wall -Wextra -Wshadow -O2 -o ./build/$fileNameWithoutExt $fileName && ./build/$fileNameWithoutExt',
+    swift = 'swift $dir/$fileName',
   },
 
   project_path = vim.fn.expand('~/.config/nvim/project_manager.json'),

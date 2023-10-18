@@ -11,6 +11,10 @@
     "name": "Metopt lab3",
     "file_name": "main.py"
   },
+  "~/polykek/metopt/curs": {
+    "name": "Metopt curs",
+    "file_name": "main.py"
+  },
   "~/polykek/tg-notifybot": {
     "name": "Notify bot",
     "file_name": "main.py"
